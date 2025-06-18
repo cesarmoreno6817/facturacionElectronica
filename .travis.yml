@@ -1,4 +1,30 @@
-dist: focal
-language: python
-script: echo "Travis is cool!"
-install: skip
+language: node_js
+node_js:
+  - "18"  # Or whichever version your project uses
+
+services:
+  - docker
+
+env:
+  global:
+    - COMPOSE_FILE=docker-compose.yml
+
+before_install:
+  - git clone --branch=master https://github.com/cesarmoreno6817/facturacionElectronica.git .
+  - |
+    if [ ! -f .env ]; then
+      cp .env.example .env
+    fi
+
+install:
+  - npm install
+
+script:
+  - npm run build
+  - docker-compose down
+  - docker-compose up -d --build
+
+notifications:
+  email:
+    on_success: always
+    on_failure: always
