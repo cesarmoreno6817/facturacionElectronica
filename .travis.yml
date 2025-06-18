@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - "18"  # Or whichever version your project uses
+  - "18"
+dist: noble
 
 services:
   - docker
@@ -28,3 +29,4 @@ notifications:
   email:
     on_success: always
     on_failure: always
+
