@@ -10,13 +10,6 @@ env:
   global:
     - COMPOSE_FILE=docker-compose.yml
 
-before_install:
-  - git clone --branch=master https://github.com/cesaraugp/facturacionElectronica-travis-ci.git .
-  - |
-    if [ ! -f .env ]; then
-      cp .env.example .env
-    fi
-
 install:
   - npm install
 
