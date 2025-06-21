@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "18"
+dist: noble
+
+services:
+  - docker
+
+env:
+  global:
+    - COMPOSE_FILE=docker-compose.yml
+
+install:
+  - npm install
+
+script:
+  - npm run build
+  - docker-compose down
+  - docker-compose up -d --build
+
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+

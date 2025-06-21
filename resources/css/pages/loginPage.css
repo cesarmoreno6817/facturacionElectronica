@@ -30,7 +30,7 @@
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    height: 35vh;
+    min-height: 35vh;
 }
 
 .LoginForm label{
